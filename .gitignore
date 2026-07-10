@@ -1,0 +1,20 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.log
+.env
+
+# Ambiente virtuale (non va nella repo: si ricrea da requirements.txt)
+.venv/
+venv/
+env/
+
+# NOTA: db.sqlite3 NON è ignorato, il progetto richiede il DB popolato nella repo.
+
+# Documento di brief / appunti (non fa parte della consegna)
+pasted.txt
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
