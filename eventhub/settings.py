@@ -10,22 +10,36 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# In produzione i valori sensibili arrivano dalle variabili d'ambiente
+# (mai segreti hardcodati); i default servono solo per lo sviluppo locale.
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rq9po!*h25eids^x+o792_nusp$na7ptz8aey_3)w#v1o8=#4v'
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-rq9po!*h25eids^x+o792_nusp$na7ptz8aey_3)w#v1o8=#4v',  # solo dev
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# In locale resta True; su Railway va impostata la variabile DEBUG=False.
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+CSRF_TRUSTED_ORIGINS = []
+
+# Railway espone il dominio pubblico in questa variabile d'ambiente.
+RAILWAY_PUBLIC_DOMAIN = os.environ.get('RAILWAY_PUBLIC_DOMAIN')
+if RAILWAY_PUBLIC_DOMAIN:
+    ALLOWED_HOSTS.append(RAILWAY_PUBLIC_DOMAIN)
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_PUBLIC_DOMAIN}')
 
 
 # Application definition
@@ -48,6 +62,8 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # WhiteNoise serve i file statici in produzione (subito dopo SecurityMiddleware).
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,6 +94,9 @@ WSGI_APPLICATION = 'eventhub.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+#
+# Pattern del corso: SQLite in locale; se DATABASE_URL è impostata
+# (come su Railway con PostgreSQL), dj-database-url la usa al suo posto.
 
 DATABASES = {
     'default': {
@@ -85,6 +104,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+if os.environ.get('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
@@ -125,6 +147,9 @@ STATIC_URL = 'static/'
 
 # Cartella per i file statici del progetto (CSS custom, immagini).
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# Destinazione di collectstatic in produzione (servita da WhiteNoise).
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

@@ -11,6 +11,9 @@ env/
 
 # NOTA: db.sqlite3 NON è ignorato, il progetto richiede il DB popolato nella repo.
 
+# Output di collectstatic (rigenerato a ogni deploy)
+staticfiles/
+
 # Documento di brief / appunti (non fa parte della consegna)
 pasted.txt
 
