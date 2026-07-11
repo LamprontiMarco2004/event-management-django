@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{% if form.instance.pk %}Modifica evento{% else %}Nuovo evento{% endif %} — EventHub{% endblock %}
+
+{% block content %}
+    {# Template unico per creazione e modifica: cambia solo il titolo. #}
+    <h1>{% if form.instance.pk %}Modifica «{{ form.instance.title }}»{% else %}Nuovo evento{% endif %}</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                {# Errori generali del form (non legati a un singolo campo). #}
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                {% endif %}
+
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary">Salva</button>
+                <a class="btn btn-outline-secondary" href="{% url 'events:event_list' %}">Annulla</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

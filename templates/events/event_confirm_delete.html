@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Elimina evento — EventHub{% endblock %}
+
+{% block content %}
+    <h1>Elimina evento</h1>
+
+    <div class="alert alert-warning">
+        Sei sicuro di voler eliminare <strong>«{{ object.title }}»</strong>?
+        L'operazione non può essere annullata e cancellerà anche tutte le iscrizioni.
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sì, elimina</button>
+        <a class="btn btn-outline-secondary" href="{{ object.get_absolute_url }}">Annulla</a>
+    </form>
+{% endblock %}

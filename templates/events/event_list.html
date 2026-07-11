@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Eventi — EventHub{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Prossimi eventi</h1>
+        {% if user.is_organizer %}
+            <a class="btn btn-primary" href="{% url 'events:event_create' %}">+ Crea evento</a>
+        {% endif %}
+    </div>
+
+    {% if events %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for event in events %}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ event.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                📅 {{ event.date|date:"d/m/Y H:i" }} — 📍 {{ event.location }}
+                            </h6>
+                            <p class="card-text">{{ event.description|truncatewords:25 }}</p>
+                            <a href="{{ event.get_absolute_url }}" class="btn btn-outline-primary btn-sm">Dettagli</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Organizzato da {{ event.organizer.username }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted">Nessun evento in programma al momento.</p>
+    {% endif %}
+{% endblock %}
