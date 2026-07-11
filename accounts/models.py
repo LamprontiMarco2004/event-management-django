@@ -17,3 +17,15 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    @property
+    def is_organizer(self):
+        """True se l'utente appartiene al gruppo Organizer.
+
+        Usata nelle view (permessi) e nei template (navbar/pulsanti per ruolo)."""
+        return self.groups.filter(name="Organizer").exists()
+
+    @property
+    def is_attendee(self):
+        """True se l'utente appartiene al gruppo Attendee."""
+        return self.groups.filter(name="Attendee").exists()
