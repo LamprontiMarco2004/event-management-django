@@ -75,7 +75,7 @@ python manage.py loaddata demo_data
 
 Applicazione online su Railway (PostgreSQL in produzione):
 
-**🔗 <INSERIRE-LINK-RAILWAY>**
+**🔗 <https://web-production-7ee8d.up.railway.app>**
 
 ## Scenario di test dal browser
 
