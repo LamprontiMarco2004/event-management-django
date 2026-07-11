@@ -1,7 +1,7 @@
 # EventHub — Event Management System
 
 **Studente:** Marco Lampronti
-**Esame:** Produzione e Progettazione Multimediale — secondo parziale (Backend con Django)
+**Esame:** Produzione e Progettazione Multimediale(Backend con Django)
 
 - **Tipo di progetto:** Full-Stack Web Application
 - **Framework:** Django (Django Template Language + Bootstrap 5)
