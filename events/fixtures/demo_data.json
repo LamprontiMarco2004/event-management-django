@@ -1,0 +1,288 @@
+[
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Organizer",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Attendee",
+    "permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$QBY7oUEVONfIIHDIHtphrr$ww6rknb49epdTOxISbZhrgiDUyJ2xEzodIfET/r/z+g=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "admin_demo",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-11T15:31:40.666Z",
+    "bio": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$PNOejEu4WRoBQJvI8DFJos$ObITQ+sG8oLTXbVcDEMVxd9M8xAM/Mw3HzCteHf0jDY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "organizer_demo",
+    "first_name": "",
+    "last_name": "",
+    "email": "organizer@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-11T15:31:40.748Z",
+    "bio": "Organizzo eventi culturali e tech a Firenze.",
+    "groups": [
+      [
+        "Organizer"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$XLD3Gptk7JSlnt1WYuvAq1$IT6UmfGg/fGTagAnj/nkD42ILpiFHwAgcIeLD4lwmFM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "attendee_demo",
+    "first_name": "",
+    "last_name": "",
+    "email": "attendee@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-11T15:31:40.828Z",
+    "bio": "Amo concerti e workshop.",
+    "groups": [
+      [
+        "Attendee"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$WTwmzXo6cnF1n7DJSITIoj$wKHwFIrALZ2vGsOXOiE9BIqladKV5iggtK0u6FTuO1I=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "marta_demo",
+    "first_name": "",
+    "last_name": "",
+    "email": "marta@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-11T15:31:40.907Z",
+    "bio": "",
+    "groups": [
+      [
+        "Attendee"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.customuser",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$hmV9vBEctVQ4sHLqKsTPEx$zKpJZidGTAerD5MlgsYAsGrXcKol/zWEu2RYzznCToA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "luca_demo",
+    "first_name": "",
+    "last_name": "",
+    "email": "luca@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-11T15:31:40.989Z",
+    "bio": "",
+    "groups": [
+      [
+        "Attendee"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "events.event",
+  "pk": 3,
+  "fields": {
+    "title": "Concerto Jazz in Piazza",
+    "description": "Serata di jazz dal vivo con quartetto locale. Ingresso libero fino a esaurimento posti.",
+    "date": "2026-07-25T19:00:00Z",
+    "location": "Piazza Santo Spirito, Firenze",
+    "organizer": [
+      "organizer_demo"
+    ]
+  }
+},
+{
+  "model": "events.event",
+  "pk": 4,
+  "fields": {
+    "title": "Workshop di Fotografia Urbana",
+    "description": "Workshop pratico di street photography per principianti. Portare la propria fotocamera o smartphone.",
+    "date": "2026-08-02T08:00:00Z",
+    "location": "Le Murate, Firenze",
+    "organizer": [
+      "organizer_demo"
+    ]
+  }
+},
+{
+  "model": "events.event",
+  "pk": 5,
+  "fields": {
+    "title": "Python Meetup Firenze",
+    "description": "Incontro mensile della community Python: talk su Django e networking finale.",
+    "date": "2026-08-20T16:30:00Z",
+    "location": "Impact Hub, Via Panciatichi 10, Firenze",
+    "organizer": [
+      "organizer_demo"
+    ]
+  }
+},
+{
+  "model": "events.event",
+  "pk": 6,
+  "fields": {
+    "title": "Degustazione Vini del Chianti",
+    "description": "Percorso guidato di degustazione con sommelier: quattro cantine del Chianti Classico.",
+    "date": "2026-09-05T17:00:00Z",
+    "location": "Enoteca Alessi, Via delle Oche, Firenze",
+    "organizer": [
+      "organizer_demo"
+    ]
+  }
+},
+{
+  "model": "events.event",
+  "pk": 7,
+  "fields": {
+    "title": "Mostra: Arte Digitale Contemporanea",
+    "description": "Vernissage della mostra collettiva su arte generativa e installazioni interattive.",
+    "date": "2026-09-18T15:00:00Z",
+    "location": "Palazzo Strozzi, Firenze",
+    "organizer": [
+      "organizer_demo"
+    ]
+  }
+},
+{
+  "model": "events.event",
+  "pk": 8,
+  "fields": {
+    "title": "Maratona di Lettura",
+    "description": "Lettura collettiva no-stop di classici della letteratura italiana. Iscrizione per turni di 30 minuti.",
+    "date": "2026-10-03T07:00:00Z",
+    "location": "Biblioteca delle Oblate, Firenze",
+    "organizer": [
+      "organizer_demo"
+    ]
+  }
+},
+{
+  "model": "events.registration",
+  "pk": 2,
+  "fields": {
+    "event": 3,
+    "attendee": [
+      "attendee_demo"
+    ],
+    "registered_at": "2026-07-11T15:31:41.072Z"
+  }
+},
+{
+  "model": "events.registration",
+  "pk": 3,
+  "fields": {
+    "event": 3,
+    "attendee": [
+      "marta_demo"
+    ],
+    "registered_at": "2026-07-11T15:31:41.073Z"
+  }
+},
+{
+  "model": "events.registration",
+  "pk": 4,
+  "fields": {
+    "event": 3,
+    "attendee": [
+      "luca_demo"
+    ],
+    "registered_at": "2026-07-11T15:31:41.073Z"
+  }
+},
+{
+  "model": "events.registration",
+  "pk": 5,
+  "fields": {
+    "event": 4,
+    "attendee": [
+      "attendee_demo"
+    ],
+    "registered_at": "2026-07-11T15:31:41.074Z"
+  }
+},
+{
+  "model": "events.registration",
+  "pk": 6,
+  "fields": {
+    "event": 5,
+    "attendee": [
+      "marta_demo"
+    ],
+    "registered_at": "2026-07-11T15:31:41.074Z"
+  }
+},
+{
+  "model": "events.registration",
+  "pk": 7,
+  "fields": {
+    "event": 5,
+    "attendee": [
+      "luca_demo"
+    ],
+    "registered_at": "2026-07-11T15:31:41.074Z"
+  }
+},
+{
+  "model": "events.registration",
+  "pk": 8,
+  "fields": {
+    "event": 6,
+    "attendee": [
+      "attendee_demo"
+    ],
+    "registered_at": "2026-07-11T15:31:41.075Z"
+  }
+},
+{
+  "model": "events.registration",
+  "pk": 9,
+  "fields": {
+    "event": 7,
+    "attendee": [
+      "marta_demo"
+    ],
+    "registered_at": "2026-07-11T15:31:41.075Z"
+  }
+}
+]
