@@ -130,3 +130,10 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Autenticazione: dove reindirizzare dopo login/logout e verso quale pagina
+# mandare gli utenti non autenticati che tentano di accedere ad aree protette.
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'          # in Fase 3 diventerà la lista eventi
+LOGOUT_REDIRECT_URL = 'login'

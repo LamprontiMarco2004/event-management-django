@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}EventHub{% endblock %}</title>
+</head>
+<body>
+    {# I messaggi di Django (successo/errore) vengono mostrati qui. #}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
